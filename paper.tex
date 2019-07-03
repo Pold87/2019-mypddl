@@ -639,18 +639,31 @@ Updated \pddl file:
   iterations and would most likely have an adverse effect on plan
   generation \cite{parkinson2012increasing}.
 
-More usable and probably faster results can be achieved by using the
-interface between \pddl and Clojure as a distance calculator,
-implemented in the tool \mypddldistance. It reads a problem file into
-Clojure and extracts all locations, defined in the \texttt{(:init
-  ...)} code block. The Euclidean distances between these locations
-are then calculated and written back into a new and now extended copy
-of the problem file, using the predicate
-\texttt{(distance~?o1~?o2~-~object ?n~-~number)}, which specifies the
-distance between two objects. Listing \ref{ls:before-mypddl-distance}
-and \ref{ls:after-mypddl-distance} show the \texttt{(:init ...)} code
-block of a extended version of \emph{Gary's Huge Problem} before and
-after using \mypddl-distance, respectively.
+  More usable and probably faster results can be achieved by using the
+  interface between \pddl and Clojure as a distance calculator,
+  implemented in the tool \mypddldistance. It reads a problem file
+  into Clojure and extracts all locations, defined in the
+  \texttt{(:init ...)} code block. The Euclidean distances between
+  these locations are then calculated and written back into a new and
+  now extended copy of the problem file, using the predicate
+  \texttt{(distance~?o1~?o2~-~object ?n~-~number)}, which specifies
+  the distance between two objects. The code blocks below show the
+  \texttt{(:init ...)} block of a \pddl problem file before and after using
+  \mypddl-distance.
+\begin{minted}[fontsize=\small,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+(:init ...
+       (location gary 4 2)
+       (location pizza 2 3))
+\end{minted}
+\begin{minted}[fontsize=\small,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+(:init ...
+       (location gary 4 2)
+       (location pizza 2 3)
+       (distance gary gary 0.0)
+       (distance gary pizza 2.2361)
+       (distance pizza gary 2.2361)
+       (distance pizza pizza 0.0))
+\end{minted}
 
 The calculator works on any arity of the specified location predicate,
 so that locations can be specified in 1D, 2D, 3D, and even used in
@@ -664,35 +677,6 @@ other location and itself. Therefore, a sensible next step would be
 to extend \pddl by increasing its mathematical expressivity
 \cite{parkinson2012increasing}, perhaps by declaring a requirement
 \texttt{:math} that specifies further mathematical operations.
-
-\begin{listing}[H]
-\begin{minted}[fontsize=\small,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
-(:init ...
-       (location gary 4 2)
-       (location pizza 2 3))
-\end{minted}
-\caption[Excerpt of the extended problem file before using
-\mypddl-distance]{\label{ls:before-mypddl-distance}Excerpt of the
-  \texttt{(:init~...)} block of the extended file \emph{Gary's Huge
-    Problem} before using \mypddl-distance.}
-\end{listing}
-
-\begin{listing}[H]
-\begin{minted}[fontsize=\small,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
-(:init ...
-       (location gary 4 2)
-       (location pizza 2 3)
-       (distance gary gary 0.0)
-       (distance gary pizza 2.2361)
-       (distance pizza gary 2.2361)
-       (distance pizza pizza 0.0))
-\end{minted}
-\caption[Excerpt of the extended problem file after using
-\mypddl-distance]{\label{ls:after-mypddl-distance}After the
-  application of \mypddl-distance, the calculated distances are
-  inserted in the \texttt{(:init ...)} code block in a copy of the
-  problem file.}
-\end{listing}
 
 
 \item[myPDDL-diagram] generates a \textsc{png} image from a \pddl
@@ -982,8 +966,9 @@ Question & $GM$                                       & $GSD$                   
     averaged over all participants; each cross~($\times$) represents
     the data value of one participant. The percent values at the
     bottom of the bars show the percentage of users that completed the
-    task successfully. The question can be found in the Appendix
-    (\ref{splisus}, \ref{store}).}\label{fig:task-completions-agg}
+    task successfully. The questions can be found in the
+    Appendix~\ref{splisus} and
+    \ref{store}.}\label{fig:task-completions-agg}
 \end{figure}
 
 \item System Usability Scale
@@ -1093,5 +1078,227 @@ acceptance and use of \pddl for planning problems.
 
 \bibliographystyle{splncs04}
 \bibliography{mybibliography}
+
+\appendix
+
+\section{Tasks}
+\label{sub:tasks}
+\subsection{Deliberately erroneous Logistics Domain}
+\label{logistics}
+\begin{minted}[fontsize=\tiny,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+;;;; Logistics domain
+
+(define (domain ?logistics)
+
+  (:requirements
+    :types) 
+
+  (:typing truck airplane motorboat - vehicle
+           package vehicle suitcase furniture - thing
+           airport garage station - location
+           car1 car 2 car3 - vehicle
+           city location thing - object)
+
+  (:predicates (in-city ?l - location ?c - city)
+               (at ?obj - thing ?l - location)
+               (key ?v - vehicle) = true
+               (full ?v - vehicle)
+               (in ?p - package ??veh - vehicle))
+
+  (:action drive
+    :parameters (?t - truck ?from ?to - location ?c - city)
+    :precondition (and (at ?tr ?from)
+                       (in-city ?from ?c)
+                       (incity ?to ?c))
+    :effect (and (not (at ?t ?from))
+                 (at ?t ?to)))
+
+  (:action fly
+    :parameters (?a - airplane ?from ?to - airport)
+    :precondition (at ?a ?from)
+    :effect (and (n0t (at ?a ?from))
+                 (at ?a ?to)))
+
+  (:action fuel
+    :parameters (?v - vehicle ?c - city ?to airport)
+    :precondition (and (not (full ?v))
+                       (in-city ?to ?c)
+                       (at ?v ?to))
+    :effect (full ?v))                   
+
+  (:action load
+    parameters: (?v - vehicle ?p - package ?l - location)
+    precondition: (and (?v ?l)
+                       (at ?p ?l))
+    :effect (and (ay ?p ?l)
+                 (in ?p ?v)))
+
+  (:action unload
+    :parameters (?v - vehicle p - package ?l - location)
+    :precondition (and (at ?v ?l)
+                           ?p ?v)
+    :effects (and (not (in ?p ?v))
+                  (at ?p - ?l))))
+                \end{minted}
+The original file can be downloaded at
+\url{http://ipc.informatik.uni-freiburg.de/PddlExtension}:
+
+\subsection{Deliberately erroneous Coffee Domain}
+\label{coffee}
+\begin{minted}[fontsize=\scriptsize,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+(define COFFEE
+
+  (requirements
+    :typing)
+
+  (:types room - location
+                 robot human _ agent
+                 furniture door - (at ?l - location)
+                 kettle ?coffee cup water - movable
+                 location agent movable - object)
+
+  (:predicates (at ?l - location ??o - object)
+               (have ?m - movable ?a - agent)
+               (hot ?m - movable) = true
+               (on ?f - furniture ?m - movable))
+
+  (:action boil
+    :parameters (?m - movable \$k - kettle ?a - agent)
+    :preconditions (have ?m ?a)
+    :effect (hot ?m))
+
+  (:action grip-some
+    :parameters (?m - movable ?r - robot ?f - _furniture ?l - location)
+    :precondition (and (at ?l ?r)
+                       (on ?fu ?m)
+                       (at ?l ?f))
+    :effect (and (have ?m ?r)))
+
+  (:action move
+    :parameters: (?m - movable ?a - agent ?from ?to - location)
+    :precondition (or (änd (at ?from ?a)
+                           (at ?from ?m))
+                           (and (at ?from ?m)
+                                (location ?from ?a)))
+    :effect (and (not (at ?from ?m))
+                 (at ?to ?m)))
+
+  (:action change-room
+    :parameters (?from-r ?to-r - room ?a - agent)
+    :precondition (at ?fromr ?a) 
+    :effect (and (not (at ?from-r ?a))
+                 (at ?tor ?a)))
+
+  (:action prep-coffee
+    :parameters (?a - agent ?c - cjp ?w - water ?cof - coffee)
+    :precondition (and (have ?c ?a)
+                       (hot ?w))
+    :effect (have ?cof ?a))
+
+  (:action ?hand-over
+    :parameters (?m - movable ?a1 - agent ?a2 - agent)
+    :precondition (have ?m ?a1))
+    :effect (and (not (have ?m ?a1))
+                 (have ?m ?a2))))
+\end{minted}
+
+\subsection{Planet Splisus}
+\label{splisus}
+\begin{minted}[fontsize=\scriptsize,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+(define (domain splisus) 
+
+  (:requirements :typing)
+
+  (:types splis - gid
+          spleus - splos
+          schprok schlok - splus
+          rud mekle - lech
+          hulpf hurpf - hupf
+          sipsi flipsi hupf - splis
+          schmok schkok - splus
+          gid splos splus - ruffisplisus
+          merle - hupf
+          ruffisplisus mak lech - object)
+
+  (:predicates (father-of ?r1 - ruffisplisus ?r2 - ruffisplisus)
+               (married ?s1 - splos ?s2 - splis)
+               (has-weapon ?h - sipsi)
+               (dead ?r1 - ruffisplisus)
+               (at ?l - lech ?r - ruffisplisus))
+
+  (:action kill
+    :parameters (?l - lech ?r1 - ruffisplisus ?s - splis)
+    :precondition (and (at ?l ?r1)
+                       (at ?l ?s)
+                       (married ?r1 ?s)
+                       (has-weapon ?s))
+    :effect (and (dead ?r1)
+            (not (married ?r1 ?s)))))
+\end{minted}
+
+Please answer the following five questions on the society and
+structure of Planet Splisus:
+\begin{enumerate}
+\item Are all \emph{Flipsis} also of the type \emph{Ruffisplisus}?
+\item Are all \emph{Merles} also \emph{Splus}?
+\item Can a \emph{Spleus} be married to a \emph{Schlok}?
+\item Only theoretically: Could a \emph{Hurpf} murder a \emph{Spleus}?
+\item Let us assume there are three categories of object types on
+  Splisus: places, beings and food. Match the three object types
+  \emph{Ruffisplisus}, \emph{Mak} and \emph{Lech} with these
+  categories.
+\end{enumerate}
+
+\subsection{Store}
+\label{store}
+\begin{minted}[fontsize=\scriptsize,bgcolor=dhscodebg,rulecolor=\color{gray!40},frame=lines,framesep=5\fboxrule,framerule=1pt,tabsize=2]{text}
+(define (domain store)
+
+  (:requirements :typing)
+
+  (:types lala lila - zahls
+          blisis blusis - ultri
+          iltre lula - nulls
+          zahls schwinds - knozi
+          minis - lala
+          ultri sopple schmitzl - lila
+          ultres raglos wexis - lola
+          kosta - nulls
+          nulls spax - minis
+          lola - zahls
+          knozi schmus - object)
+
+  (:predicates (product ?k - knozi) ; Produkt
+               (workplace ?l1 - lola ?l2 - lala) 
+               (product-at ?l1 - lola ?l2 - lila) 
+               (cashier ?k - knozi) 
+               (customer ?s - spax)
+               (owns ?l - lila ?s - spax)) 
+
+  (:action sell
+    :parameters (?p - lila ?z - zahls ?l - lola ?w - wexis ?s - spax)
+    :precondition (and (product ?p)
+                       (cashier ?z)
+                       (product-at ?l ?p)
+                       (customer ?s))
+    :effect (and (product-at ?w ?p)
+                 (not (product-at ?l ?p))
+                 (owns ?p ?s))))
+\end{minted}
+Please answer the following five questions concerning the environment
+store:
+\begin{enumerate}
+\item Are objects of the type \emph{Lula} also of the type
+    \emph{Minis}?
+\item Are \emph{Spax} and \emph{Schmus} \emph{Zahls}?
+\item Is it possible for an Iltre to work at a
+    \emph{workplace} of the type \emph{Knozi}?
+\item Only theoretically: Could a \emph{Lala} sell a
+    \emph{Schmitzl} to a \emph{Kosta}?
+\item Let us assume our domain \emph{store} models a
+    grocery store. There are three categories: humans, products, and
+    places. Can you match these world terms with the object types
+    \emph{lila}, \emph{lala}, and \emph{lola} from the domain?
+\end{enumerate}
 
 \end{document}
