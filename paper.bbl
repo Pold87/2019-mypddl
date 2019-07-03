@@ -104,10 +104,17 @@ Shah, M., Chrpa, L., Jimoh, F., Kitchin, D., McCluskey, T., Parkinson, S.,
   Vallati, M.: Knowledge engineering tools in planning: State-of-the-art and
   future challenges. Knowledge Engineering for Planning and Scheduling  (2013)
 
-\bibitem{tonidandel2006reading}
-Tonidandel, F., Vaquero, T.S., Silva, J.R.: Reading {PDDL}, writing an
-  object-oriented model. In: Advances in Artificial Intelligence --
-  IBERAMIA-SBIA 2006, pp. 532--541. Springer (2006)
+\bibitem{shah2013exploring}
+Shah, M.M., Chrpa, L., Kitchin, D., McCluskey, T.L., Vallati, M.: Exploring
+  knowledge engineering strategies in designing and modelling a road traffic
+  accident management domain. In: Proceedings of the Twenty-Third International
+  Joint Conference on Artificial Intelligence. pp. 2373--2379. AAAI Press
+  (2013)
+
+\bibitem{StrKir2014:aai}
+Strobel, V., Kirsch, A.: Planning in the wild: {M}odeling tools for {PDDL}. In:
+  Lutz, C., Thielscher, M. (eds.) KI 2014: Advances in Artificial Intelligence,
+  LNCS, vol.~8736, pp. 273--284. Springer, Cham, Switzerland (2014)
 
 \bibitem{vaquero2006use}
 Vaquero, T.S., Tonidandel, F., de~Barros, L.N., Silva, J.R.: On the use of
