@@ -1,0 +1,128 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{keps2014}
+Ws 5: Knowledge engineering for planning and scheduling ({KEPS}).
+  \url{http://icaps14.icaps-conference.org/workshops_tutorials/keps.html}
+  (2014), accessed: 2019-06-03
+
+\bibitem{sublimetext3}
+Sublime text 3. \url{http://www.sublimetext.com/} (2019), accessed: 2019-06-24
+
+\bibitem{bangor2008empirical}
+Bangor, A., Kortum, P.T., Miller, J.T.: An empirical evaluation of the system
+  usability scale. Intl. Journal of Human--Computer Interaction
+  \textbf{24}(6),  574--594 (2008)
+
+\bibitem{brooke1996sus}
+Brooke, J.: Sus -- a quick and dirty usability scale. Usability evaluation in
+  industry  \textbf{189} (1996)
+
+\bibitem{edelkamp2004pddl2}
+Edelkamp, S., Hoffmann, J.: {PDDL}2.2: The language for the classical part of
+  the 4th {I}nternational {P}lanning {C}ompetition. 4th International Planning
+  Competition (IPC-04)  (2004)
+
+\bibitem{ellson2002graphviz}
+Ellson, J., Gansner, E., Koutsofios, L., North, S.C., Woodhull, G.: Graphviz -
+  open source graph drawing tools. In: Graph Drawing. pp. 483--484. Springer
+  (2002)
+
+\bibitem{feigenbaum1983fifth}
+Feigenbaum, E.A., McCorduck, P.: The Fifth Generation. Addison-Wesley Reading
+  (1983)
+
+\bibitem{goldman2012type}
+Goldman, R.P., Keller, P.: "type problem in domain description!" or, outsiders'
+  suggestions for {PDDL} improvement. WS-IPC 2012 p.~43 (2012)
+
+\bibitem{guerin2012academic}
+Guerin, J.T., Hanna, J.P., Ferland, L., Mattei, N., Goldsmith, J.: The academic
+  advising planning domain. WS-IPC 2012 p.~1 (2012)
+
+\bibitem{helmert2008understanding}
+Helmert, M.: Understanding Planning Tasks: Domain Complexity and Heuristic
+  Decomposition, vol.~4929. Springer (2008)
+
+\bibitem{hickey2008clojure}
+Hickey, R.: The {C}lojure programming language. In: Proceedings of the 2008
+  symposium on Dynamic languages. ACM (2008)
+
+\bibitem{hwang2010number}
+Hwang, W., Salvendy, G.: Number of people required for usability evaluation:
+  the 10$\pm$2 rule. Communications of the ACM  \textbf{53}(5),  130--133
+  (2010)
+
+\bibitem{ilghami2005extension}
+Ilghami, O., Murdock, J.W.: An extension to pddl: Actions with embedded code
+  calls. In: Proceedings of the ICAPS 2005 Workshop on Plan Execution: A
+  Reality Check. pp. 84--86 (2005)
+
+\bibitem{konar1999artificial}
+Konar, A.: Artificial Intelligence and Soft Computing: Behavioral and Cognitive
+  Modeling of the Human Brain, vol.~1. CRC press (1999)
+
+\bibitem{lindholm2014java}
+Lindholm, T., Yellin, F., Bracha, G., Buckley, A.: The Java virtual machine
+  specification. Pearson Education (2014)
+
+\bibitem{mcdermott1998pddl}
+Mcdermott, D., Ghallab, M., Howe, A., Knoblock, C., Ram, A., Veloso, M., Weld,
+  D., Wilkins, D.: Pddl - the planning domain definition language  (1998)
+
+\bibitem{nielsen1994estimating}
+Nielsen, J.: Estimating the number of subjects needed for a thinking aloud
+  test. International journal of human-computer studies  \textbf{41}(3),
+  385--397 (1994)
+
+\bibitem{norman2002design}
+Norman, D.A.: The design of everyday things. Basic books (2002)
+
+\bibitem{parkinson2012increasing}
+Parkinson, S., Longstaff, A.P.: Increasing the numeric expressiveness of the
+  {P}lanning {D}omain {D}efinition {L}anguage. In: Proceedings of The 30th
+  Workshop of the UK Planning and Scheduling Special Interest Group
+  (PlanSIG2012). UK Planning and Scheduling Special Interest Group (2012)
+
+\bibitem{plch2012inspect}
+Plch, T., Chomut, M., Brom, C., Bart{\'a}k, R.: Inspect, edit and debug {PDDL}
+  documents: Simply and efficiently with {PDDL} {S}tudio. ICAPS12 System
+  Demonstration  (2012)
+
+\bibitem{sauro2011practical}
+Sauro, J.: A practical guide to the system usability scale: Background,
+  benchmarks \& best practices. Measuring Usability LLC (2011)
+
+\bibitem{sauro2012quantifying}
+Sauro, J., Lewis, J.R.: Quantifying the user experience: Practical statistics
+  for user research. Elsevier (2012)
+
+\bibitem{shah2013knowledge}
+Shah, M., Chrpa, L., Jimoh, F., Kitchin, D., McCluskey, T., Parkinson, S.,
+  Vallati, M.: Knowledge engineering tools in planning: State-of-the-art and
+  future challenges. Knowledge Engineering for Planning and Scheduling  (2013)
+
+\bibitem{tonidandel2006reading}
+Tonidandel, F., Vaquero, T.S., Silva, J.R.: Reading {PDDL}, writing an
+  object-oriented model. In: Advances in Artificial Intelligence --
+  IBERAMIA-SBIA 2006, pp. 532--541. Springer (2006)
+
+\bibitem{vaquero2006use}
+Vaquero, T.S., Tonidandel, F., de~Barros, L.N., Silva, J.R.: On the use of
+  {UML.P} for modeling a real application as a planning problem. In: ICAPS. pp.
+  434--437 (2006)
+
+\bibitem{vaquero2005itsimple}
+Vaquero, T.S., Tonidandel, F., Silva, J.R.: The {itSIMPLE} tool for modeling
+  planning domains. Proceedings of the First International Competition on
+  Knowledge Engineering for AI Planning, Monterey, California, USA  (2005)
+
+\bibitem{vaquero2012itsimple4}
+Vaquero, T., Tonaco, R., Costa, G., Tonidandel, F., Silva, J.R., Beck, J.C.:
+  {itSIMPLE}4.0: Enhancing the modeling experience of planning problems. In:
+  System Demonstration--Proceedings of the 22nd International Conference on
+  Automated Planning \& Scheduling (ICAPS-12) (2012)
+
+\end{thebibliography}

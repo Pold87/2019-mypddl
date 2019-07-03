@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+(:init (hungry gary)
+       (in pizza\PYGZhy{}box big\PYGZhy{}pepperoni)
+       (has\PYGZhy{}access gisela magicfailureapp))
+       (hungry gisela))
+\end{Verbatim}

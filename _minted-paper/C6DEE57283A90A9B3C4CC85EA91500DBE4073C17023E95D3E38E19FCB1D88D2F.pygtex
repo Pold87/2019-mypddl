@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+(:init ...
+       (location gary 4 2)
+       (location pizza 2 3)
+       (distance gary gary 0.0)
+       (distance gary pizza 2.2361)
+       (distance pizza gary 2.2361)
+       (distance pizza pizza 0.0))
+\end{Verbatim}

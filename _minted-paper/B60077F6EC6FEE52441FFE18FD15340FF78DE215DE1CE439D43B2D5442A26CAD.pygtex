@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{(}\PYG{n+nf}{add\PYGZhy{}construct} \PYG{l+s}{\PYGZdq{}garys\PYGZhy{}huge\PYGZhy{}problem.pddl\PYGZdq{}} \PYG{l+s+ss}{:init} \PYG{o}{\PYGZsq{}}\PYG{p}{((}\PYG{n+nf}{hungry} \PYG{n+nv}{gisela}\PYG{p}{)))}
+\end{Verbatim}
