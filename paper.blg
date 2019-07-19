@@ -1,50 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
+This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: paper.aux
 The style file: splncs04.bst
 Database file #1: mybibliography.bib
-Warning--to sort, need author or key in keps2014
-Warning--to sort, need author or key in sublimetext3
 Warning--empty journal in mcdermott1998pddl
-You've used 28 entries,
+You've used 25 entries,
             2850 wiz_defined-function locations,
-            746 strings with 9600 characters,
-and the built_in function-call counts, 13842 in all, are:
-= -- 1077
-> -- 446
+            733 strings with 9220 characters,
+and the built_in function-call counts, 12791 in all, are:
+= -- 998
+> -- 422
 < -- 17
-+ -- 193
-- -- 156
-* -- 821
-:= -- 1796
-add.period$ -- 36
-call.type$ -- 28
-change.case$ -- 172
++ -- 181
+- -- 148
+* -- 765
+:= -- 1680
+add.period$ -- 33
+call.type$ -- 25
+change.case$ -- 158
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 1278
-empty$ -- 1333
-format.name$ -- 176
-if$ -- 3016
+cite$ -- 26
+duplicate$ -- 1178
+empty$ -- 1208
+format.name$ -- 167
+if$ -- 2776
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 266
-newline$ -- 90
-num.names$ -- 54
-pop$ -- 560
+int.to.str$ -- 25
+missing$ -- 246
+newline$ -- 81
+num.names$ -- 52
+pop$ -- 506
 preamble$ -- 1
-purify$ -- 133
+purify$ -- 123
 quote$ -- 0
-skip$ -- 351
+skip$ -- 324
 stack$ -- 0
-substring$ -- 639
-swap$ -- 615
+substring$ -- 595
+swap$ -- 574
 text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 98
-warning$ -- 3
-while$ -- 107
-width$ -- 30
-write$ -- 274
-(There were 3 warnings)
+type$ -- 88
+warning$ -- 1
+while$ -- 102
+width$ -- 27
+write$ -- 247
+(There was 1 warning)

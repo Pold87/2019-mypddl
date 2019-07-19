@@ -3,14 +3,6 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
-\bibitem{keps2014}
-Ws 5: Knowledge engineering for planning and scheduling ({KEPS}).
-  \url{http://icaps14.icaps-conference.org/workshops_tutorials/keps.html}
-  (2014), accessed: 2019-06-03
-
-\bibitem{sublimetext3}
-Sublime text 3. \url{http://www.sublimetext.com/} (2019), accessed: 2019-06-24
-
 \bibitem{bangor2008empirical}
 Bangor, A., Kortum, P.T., Miller, J.T.: An empirical evaluation of the system
   usability scale. Intl. Journal of Human--Computer Interaction
@@ -35,8 +27,8 @@ Feigenbaum, E.A., McCorduck, P.: The Fifth Generation. Addison-Wesley Reading
   (1983)
 
 \bibitem{goldman2012type}
-Goldman, R.P., Keller, P.: "type problem in domain description!" or, outsiders'
-  suggestions for {PDDL} improvement. WS-IPC 2012 p.~43 (2012)
+Goldman, R.P., Keller, P.: "{T}ype problem in domain description!" or,
+  outsiders' suggestions for {PDDL} improvement. WS-IPC 2012 p.~43 (2012)
 
 \bibitem{guerin2012academic}
 Guerin, J.T., Hanna, J.P., Ferland, L., Mattei, N., Goldsmith, J.: The academic
@@ -64,13 +56,9 @@ Ilghami, O., Murdock, J.W.: An extension to pddl: Actions with embedded code
 Konar, A.: Artificial Intelligence and Soft Computing: Behavioral and Cognitive
   Modeling of the Human Brain, vol.~1. CRC press (1999)
 
-\bibitem{lindholm2014java}
-Lindholm, T., Yellin, F., Bracha, G., Buckley, A.: The Java virtual machine
-  specification. Pearson Education (2014)
-
 \bibitem{mcdermott1998pddl}
-Mcdermott, D., Ghallab, M., Howe, A., Knoblock, C., Ram, A., Veloso, M., Weld,
-  D., Wilkins, D.: Pddl - the planning domain definition language  (1998)
+McDermott, D., Ghallab, M., Howe, A., Knoblock, C., Ram, A., Veloso, M., Weld,
+  D., Wilkins, D.: {PDDL} - the planning domain definition language  (1998)
 
 \bibitem{nielsen1994estimating}
 Nielsen, J.: Estimating the number of subjects needed for a thinking aloud
