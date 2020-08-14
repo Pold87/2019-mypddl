@@ -22,7 +22,6 @@
 \newcommand{\tableheadline}[1]{\multicolumn{1}{c}{#1}}
 \usepackage{dirtree}
 \usepackage{rotating}
-\usepackage{caption}
 \usepackage{booktabs}
 
 % More space between rows:		
@@ -31,7 +30,7 @@
 \setlength{\tabcolsep}{8pt}
 \usepackage{minted}
 \definecolor{dhscodebg}{rgb}{0.95,0.95,0.95} % listing background
-%\DeclareUnicodeCharacter{2212}{-}
+\DeclareUnicodeCharacter{2212}{-}
 
 \usepackage{xspace}
 \renewcommand\UrlFont{\color{blue}\rmfamily}
@@ -102,37 +101,51 @@ Independent Scientist\\
 \section{Introduction}
 \label{sec:introduction}
 
-Being a key aspect of artificial intelligence, \emph{planning} is
+Being a key aspect of artificial intelligence (AI), \emph{planning} is
 concerned with devising a sequence of actions to achieve a desired
-goal \cite{helmert2008understanding}. It can be both a tool to create
-automated systems and a means to support and understand human
-behavior~\cite{konar1999artificial}. However, the effectiveness of
-planning largely depends on the quality of the problem formalization
-\cite{shah2013knowledge}. To ensure a standardized modeling format,
-\pddl (\emph{Planning Domain Definition Language})
-\cite{mcdermott1998pddl} was developed and has become the de facto
-standard for the description of planning tasks
-\cite{ilghami2005extension}. The discipline that deals with the
-integration of world information into a computer system via a human
-expert is called knowledge engineering \cite{feigenbaum1983fifth}.
-While automated planning could save vast amounts of time if everything
-works as intended, creating the planning task specifications is a
-complex task that can be error-prone and cumbersome.
+goal~\cite{helmert2008understanding}. AI planning has made remarkable
+progress in solving planning problems in large state spaces that would
+be impossible for humans to handle. The International Planning
+Competition\footnote{\url{http://www.icaps-conference.org/index.php/Main/Competitions/}}
+has led to a number of open source planners that are ready to be used
+by practitioners and researchers outside the AI planning field.
 
-In this chapter, we describe \mypddl
-(Figure~\ref{fig:mypddl-overview}), a knowledge engineering toolkit
-that supports the knowledge engineer in the entire design cycle of
-specifying planning tasks. In the initial stages, it allows for the
-creation of structured \pddl projects that should encourage a
-disciplined design process. With the help of snippets, that is, code
-templates, often used syntactic constructs can be inserted into \pddl
-files. A syntax highlighting feature that speeds up the
-error-detection can come in handy in intermediate
-stages. Understanding the textual representation of complex type
-hierarchies in domain files can be confusing, so an additional tool
-enables their visualization. \pddl's limited modeling capabilities
-were bypassed by developing an interface that converts \pddl code into
-code of the functional programming language Clojure
+However, the effectiveness of planning largely depends on the quality
+of the problem formalization~\cite{shah2013knowledge}. \pddl
+(\emph{Planning Domain Definition Language})~\cite{mcdermott1998pddl}
+is the de facto standard for the description of planning
+tasks~\cite{ilghami2005extension}. It divides the description of a
+planning task into a domain model and problem descriptions: the
+description of a household with its objects and locations would be a
+domain, with possible tasks such as making breakfast, cleaning the
+windows, or changing a light bulb. Someone with a non-planning
+background, for example, from robotics, has to get used to the \pddl
+syntax and its possibilities to describe the world. She also has to
+keep track of the facts in the domain model and the different planning
+tasks. While automated planning can save vast amounts of time to find
+a valid solution, creating the planning task specifications is a
+complex, error-prone, and cumbersome task. An ill-defined problem is
+often the reason for finding suboptimal plans or no plan at all.  The
+household domain in this example comes with another challenge. For
+many tasks the distances between objects or other numerical input may
+be necessary. \pddl is by its very nature as a planning language
+designed for symbolic specifications. To use numerical data
+efficiently, it must often be preprocessed.
+
+In this chapter, we describe
+\mypddl~(Figure~\ref{fig:mypddl-overview}), a knowledge engineering
+toolkit that supports knowledge engineers in the entire design cycle
+of specifying planning tasks without having to become an expert in AI
+planning. In the initial stages, it allows for the creation of
+structured \pddl projects that should encourage a disciplined design
+process. With the help of snippets, that is, code templates, often
+used syntactic constructs can be inserted into \pddl files. A syntax
+highlighting feature that speeds up the error-detection supports
+intermediate stages. Understanding the textual representation of
+complex type hierarchies in domain files can be confusing, so an
+additional tool enables their visualization. \pddl's limited modeling
+capabilities were bypassed by developing an interface that converts
+\pddl code into code of the functional programming language Clojure
 \cite{hickey2008clojure} and vice versa.  Within this project, the
 interface was employed for a feature that calculates distances between
 objects specified in a problem model, but the interface provides
@@ -140,13 +153,16 @@ numerous other possibilities and could also be used to further
 automate the modeling process. A basic planner integration allows for
 quickly running a desired planner. All of the features were integrated
 into the customizable and extensible Sublime
-Text\footnote{\url{http://www.sublimetext.com/}} editor. Since the
-main aim in the development of the toolkit was for it to be easy to
-use and maintain, it is evaluated with regard to these criteria. The
-usability was assessed by means of a user test with eight subjects
-that had no prior experience with AI planning. The results indicate
-that both error-detection and the understanding of a given domain can
-be facilitated by \mypddl.
+Text\footnote{\url{http://www.sublimetext.com/}} editor.
+
+Since the main aim in the development of the toolkit was for it to be
+easy to use and maintain, it is evaluated with regard to these
+criteria. Another aim was to make planning more accessible in
+real-life tasks and to enable inexperienced users to get started with
+planning problems. Therefore, \mypddl's usability was assessed by
+means of a user test with eight subjects that had no prior experience
+with AI planning. The results show that \mypddl facilitates both
+error-detection and the understanding of a given domain.
 
 \begin{figure}[H]
   \centering
@@ -168,9 +184,9 @@ be facilitated by \mypddl.
   \end{tikzpicture}
     \caption{\mypddl is a highly customizable and extensible modular
     system, designed for supporting knowledge engineers in the process
-    of writing, analyzing and expanding PDDL files and thereby
+    of writing, analyzing and expanding \pddl files and thereby
     promoting the collaboration between knowledge engineers and the
-    use of PDDL in real-world applications. It consists of the parts
+    use of \pddl in real-world applications. It consists of the parts
     shown in the figure.}
   \label{fig:mypddl-overview}  
 \end{figure}
@@ -208,12 +224,12 @@ syntactic (missing keywords, parentheses, etc.) and semantic (wrong
 type of predicate parameters, misspelled predicates, etc.)
 errors. This means that \pddlstudio can detect errors based on a
 mismatch between domain and problem file in real time. The code
-completion feature offers recommendations for standard standard
-\textsc{pddl} constructs as well as for previously used terms. Code
-folding allows the knowledge engineer to hide currently not needed
-code blocks. In this case only the first line of the block is
-displayed. Lastly, a command-line interface allows the integration of
-planners in order to run and compare different planning software.
+completion feature offers recommendations for standard \textsc{pddl}
+constructs as well as for previously used terms. Code folding allows
+the knowledge engineer to hide currently not needed code blocks. In
+this case only the first line of the block is displayed. Lastly, a
+command-line interface allows the integration of planners in order to
+run and compare different planning software.
 
 Unlike \pddlstudio, which provides a text based editor for \pddl, the
 \itsimple \cite{vaquero2005itsimple} editor has, as its main feature,
@@ -270,7 +286,7 @@ code navigation.
 object-fluents.
 
 The online tool \epd allows for editing \pddl files in a web
-browser. Its feature comprise syntax highlighting, code folding,
+browser. Its features comprise syntax highlighting, code folding,
 \pddl-specific auto-completion, and multi-tab support. The editor is
 part of the Planning-Domains\footnote{\url{http://planning.domains/}}
 initiative which aims at providing three pillars to the planning
@@ -300,9 +316,9 @@ used in \mypddl is introduced.
 existing editors and therefore cannot fall back on refined
 implementations of features, such as selection of tab size, defining
 custom key shortcuts, customizing the general look and feel, and
-bracket matching. In contrast, \vscode is integrated into the
-mature editor Visual Studio Code and can be used in combination with
-other plugins. To have both basic editor features and a high
+bracket matching. In contrast, \vscode and \pddlmode for Emacs are
+integrated into mature code editors and can be used in combination
+with other plugins. To have both basic editor features and a high
 customizability, it was decided to use an existing, extensible text
 editor to integrate \mypddl into.
 
@@ -324,18 +340,18 @@ of the primary objectives of \mypddl is to help users in keeping track
 of their \pddl programs. As a means to this end, it was decided to
 also implement sophisticated, context-dependent syntax highlighting.
 
-Another feature that can be useful for fast development is the ability
-to insert larger code skeletons or snippets. \pddlstudio does not
-support the insertion of code snippets. \itsimple features some code
-templates for predicates, derived predicates, functions, actions,
-constraints, types, comments, requirements, objects, and
-metrics. However, the templates are neither customizable nor
-extensible. \pddlmode for Emacs provides three larger skeletons: one
-for domains, one for problems, and one for actions. Further skeletons
-could be added. Both \epd and \vscode provide many code
-snippets. \mypddl aims to combine the best of these latter tools and
-support customizable and extensible snippets for domains, problems,
-types, predicates, functions, actions, and durative actions.
+Another useful feature for fast development is the ability to insert
+larger code skeletons or snippets. \pddlstudio does not support the
+insertion of code snippets. \itsimple features some code templates for
+predicates, derived predicates, functions, actions, constraints,
+types, comments, requirements, objects, and metrics. However, the
+templates are neither customizable nor extensible. \pddlmode for Emacs
+provides three larger skeletons: one for domains, one for problems,
+and one for actions. Further skeletons could be added. Both \epd and
+\vscode provide many code snippets. \mypddl aims to combine the best
+of these latter tools and support customizable and extensible snippets
+for domains, problems, types, predicates, functions, actions, and
+durative actions.
 
 \pddlstudio, \pddlmode for Emacs, and \epd do not provide
 visualization options. \itsimple, on the other hand, is based entirely
@@ -379,7 +395,7 @@ program, meaning that there are no \pddl-independent extensions. The
 same holds true for \itsimple. Since both Emacs and VS Code are
 established editors, \pddlmode and \vscode are highly customizable and
 extensible. This is the other major reason why it was decided that
-\mypddl should be integrated into a existing, extensible, and
+\mypddl should be integrated into an existing, extensible, and
 customizable text editor. These requirements are met by Sublime Text,
 a text editor that offers a wide variety of features and plugins.
 
@@ -510,7 +526,7 @@ For example, typing \texttt{action} and pressing the tabulator key
 inserts a skeleton to specify an action. \pddl constructs with a
 specified arity can be generated by adding the arity number to the
 trigger (\texttt{p2} would insert the binary predicate template
-\texttt{(pred-name~?x~-~object~?y~-~object)}.
+\texttt{(pred-name~?x~-~object~?y~-~object)}).
 
 Every snippet is stored in a separate file, located in the packages
 folder of Sublime Text. New snippets can be added and existing
@@ -753,7 +769,7 @@ using \mypddlsyntax and \mypddldiagram.
 
 The two most central modules of \mypddl are \mypddlsyntax and
 \mypddldiagram, since they support collaboration, efficiency, and
-debugging independently of the user’s experience with \pddl. To
+debugging independently of the user's experience with \pddl. To
 evaluate their usability, they were evaluated in a user study. To this
 end, we compared the user performance regarding several tasks, both
 with and without using the respective module.
@@ -773,27 +789,29 @@ parentheses, but no experience with \pddl or AI planning in general.
 \subsubsection{Approach}
 
 24 hours before the experiment was to take place, participants
-received the web
-link\footnote{Tutorial in German: \url{https://www.youtube.com/watch?v=Uck-K8VnNOU&list=PL3CZzLUZuiIMWEfJxy-G6OxYVzUrvjwuV}} to a 30-minute interactive video tutorial
-on AI planning and \pddl. This method was chosen in order not to
-pressure the participant with the presence of an experimenter when
-trying to understand the material.
+received the web link\footnote{Tutorial in German:
+  \url{https://www.youtube.com/watch?v=Uck-K8VnNOU&list=PL3CZzLUZuiIMWEfJxy-G6OxYVzUrvjwuV}}
+to a 30-minute interactive video tutorial on AI planning and
+\pddl. This method was chosen in order not to pressure the participant
+with the presence of an experimenter when trying to understand the
+material.
 
 \subsubsection{Procedure}
 
-We defined four tasks: two debugging tasks for testing the syntax
-highlighting feature and two type hierarchy tasks for testing the type
-diagram generator. A within subjects design was considered most suited
-due to the small number of participants. Therefore, it was necessary to
-construct two tasks matched in difficulty for each of these two
-types to compare the effects of having the tools available. Each
-participant started either with a debugging or type hierarchy task and
-was given the \mypddl tools either in the first two tasks or the
-second two tasks, so that each participant completed each task type
-once with and once without \mypddl. This results in $2$ (first task is
-debugging or hierarchy) $\times$ $2$ (task variations for debugging
-and hierarchy) $\times$ $2$ (starting with or without \mypddl) $= 8$
-individual task orders, one per participant.
+We defined four tasks (Appendix~\ref{sub:tasks}): two debugging tasks
+for testing the syntax highlighting feature and two type hierarchy
+tasks for testing the type diagram generator. A within subjects design
+was considered most suited due to the small number of
+participants. Therefore, it was necessary to construct two tasks
+matched in difficulty for each of these two types to compare the
+effects of having the tools available. Each participant started either
+with a debugging or type hierarchy task and was given the \mypddl
+tools either in the first two tasks or the second two tasks, so that
+each participant completed each task type once with and once without
+\mypddl. This results in $2$ (first task is debugging or hierarchy)
+$\times$ $2$ (task variations for debugging and hierarchy) $\times$
+$2$ (starting with or without \mypddl) $= 8$ individual task orders,
+one per participant.
 
 \begin{itemize}
 \item Debugging Tasks
@@ -840,10 +858,10 @@ individual task orders, one per participant.
 
 \end{itemize}
 
+\newpage
 \subsubsection{Analysis}
-
 \begin{itemize}
-\item Debugging Tasks: \nopagebreak To compare differences in the
+\item Debugging Tasks: To compare differences in the
   debugging tasks, a paired sample $t$-test was used; normality was
   tested with a Shapiro-Wilk test. To compare the arithmetic means
   ($M$s) of detected errors, the test was performed two-tailed, since
@@ -880,8 +898,8 @@ individual task orders, one per participant.
 \item Debugging Tasks
 
   The participants detected more errors using the syntax highlighting
-  feature, ($M = 7.6$, $SD = 2.07$) than without it ($M = 10.3$,
-  $SD = 3.45$); $t(7) = 2.68$, $p = 0.03$.  That is, approximately
+  feature ($M = 10.3$, $SD = 3.45$) than without it ($M = 7.6$,
+  $SD = 2.07$); $t(7) = 2.68$, $p = 0.03$.  That is, approximately
   36\,\% more errors were found with syntax highlighting. The
   arithmetic means are displayed in Figure
   \ref{fig:found-errors-combined}, where each cross~($\times$)
@@ -928,14 +946,11 @@ Question & $GM$                                       & $GSD$                   
       Q5 & 41.2                                       & 2.24                        & 78.0 & 1.48  & 7    & -2.75 & 0.03 \\
 \bottomrule
     \end{tabular}
-
     \caption{Overview of geometric means ($GM$s), geometric standard deviations ($GSD$s), degrees of freedom ($df$), $t$-values, and $p$-values. The calculation for Q4 is based on only two paired data values ($df = 1$). This table only considers paired data values, this means only if a participant answered the question correctly in both domains, the data value is considered (since \emph{paired} $t$-tests are calculated). In contrast, Figure \ref{fig:task-completions-agg} displays the geometric means for all correct answers.}
-
     \label{tab:p-values}
   \end{table}
 
 \begin{figure}[h]
-\captionsetup{singlelinecheck=off}
   \centering
   \hspace{1.7cm}
   \includegraphics[width=0.85\textwidth]{task_time}
@@ -972,7 +987,9 @@ each part of the user test in turn.
   was the only participant who found less errors with syntax
   highlighting than without it. With \mypddlsyntax, two participants
   found all errors in the domain, while none achieved this without
-  syntax highlighting.
+  syntax highlighting. While every participant had to use the same
+  color scheme in the experiment, colors are customizable in
+  \sublimetext.
 
 \item Type Hierarchy Tasks
 
